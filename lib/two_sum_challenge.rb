@@ -13,12 +13,10 @@ Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 
 def two_sum(nums, target)
-    target_indexes = []
-    nums.each_with_index do |primary_num, index|
-      nums[index+1..-1].each do |secondary_num|
-        if primary_num != secondary_num && (primary_num + secondary_num) == target 
-          target_indexes = [index, nums.find_index(secondary_num)]
-          return target_indexes
+    nums.each_with_index do |primary_num, primary_index|
+      nums.each_with_index do |secondary_num, secondary_index|
+        if primary_index != secondary_index && (primary_num + secondary_num) == target 
+          return [primary_index, secondary_index]
         end
       end
     end
